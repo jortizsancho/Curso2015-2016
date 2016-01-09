@@ -1,6 +1,6 @@
 <html>
     <head>
-        <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.indigo-pink.min.css">
+        <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.lime-orange.min.css" />
         <script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <script src="https://maps.googleapis.com/maps/api/js"></script>
@@ -61,6 +61,11 @@
                 </section>
                 <section class="mdl-layout__tab-panel" id="fixed-tab-2">
                     <div class="page-content" ng-controller="Actividades as actividades">
+                        <div class="mdl-grid">
+                            <div class="mdl-cell mdl-cell--12-col">
+                                <h4>Todos los Centros Deportivos</h4>
+                            </div>
+                        </div>
                         <div class="mdl-grid">
                             <!-- Repetir por cada actividad -->
                             <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--6-col-phone" ng-repeat="actividad in actividades.actividades">

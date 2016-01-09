@@ -72,6 +72,5 @@ function cargarActividades() {
     }, this);
 }
 
-
 google.maps.event.addDomListener(window, 'load', cargarCentros);
 google.maps.event.addDomListener(window, 'load', cargarActividades);
