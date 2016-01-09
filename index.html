@@ -4,10 +4,13 @@
         <script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <script src="https://maps.googleapis.com/maps/api/js"></script>
-        <link rel="stylesheet" href="./index.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+        
+        <script src="index.js"></script>
+        <link rel="stylesheet" href="index.css">
     </head>
     
-    <body>
+    <body ng-app="cdm">
         <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs">
             <header class="mdl-layout__header">
                 <div class="mdl-layout__header-row">
@@ -37,14 +40,14 @@
             </div>
             <main class="mdl-layout__content">
                 <section class="mdl-layout__tab-panel is-active" id="fixed-tab-1">
-                    <div class="page-content">
+                    <div class="page-content" ng-controller="Centros as centros">
                         <div class="mdl-grid">
                             <!-- Repetir por cada centro -->
-                            <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--6-col-phone">
+                            <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--6-col-phone"" ng-repeat="centro in centros.centros">
                                 <div class="card-centro mdl-card mdl-shadow--2dp">
                                     <div class="mdl-card__title mdl-card--expand"></div>
                                     <div class="mdl-card__actions">
-                                        <span class="card-centro__filename">Centro numero 1</span>
+                                        <span class="card-centro__filename">{{centro.nombre}}</span>
                                     </div>
                                 </div>
                             </div>
@@ -57,16 +60,16 @@
                     </div>
                 </section>
                 <section class="mdl-layout__tab-panel" id="fixed-tab-2">
-                    <div class="page-content">
+                    <div class="page-content" ng-controller="Actividades as actividades">
                         <div class="mdl-grid">
                             <!-- Repetir por cada actividad -->
-                            <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--6-col-phone">
+                            <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--6-col-phone" ng-repeat="actividad in actividades.actividades">
                                 <div class="card-actividades mdl-card mdl-shadow--2dp">
                                     <div class="mdl-card__title mdl-card--expand">
                                         <h4>
-                                        Actividad: Partido de Futbol<br>
-                                        May 24, 2016<br>
-                                        7-11pm
+                                        Actividad: {{actividad.nombre}}<br>
+                                        {{actividad.fecha}}<br>
+                                        {{actividad.hora}}
                                         </h4>
                                     </div>
                                     <div class="mdl-card__actions mdl-card--border">
@@ -89,20 +92,7 @@
             </main>
         </div>
         <script>
-            var mapCanvasCentros = document.getElementById('mapCentros');
-            var mapCanvasActividades = document.getElementById('mapActividades');
-            
-            function initializeMap(mapCanvas) {
-                var mapOptions = {
-                    center: new google.maps.LatLng(40.433848, -3.695427),
-                    zoom: 13,
-                    mapTypeId: google.maps.MapTypeId.ROADMAP
-                }
-                var map = new google.maps.Map(mapCanvas, mapOptions);
-            }
-            
-            initializeMap(mapCanvasCentros);
-            initializeMap(mapCanvasActividades);
+            initializeMap();
         </script>
     </body>
 </html>
