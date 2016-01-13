@@ -3,6 +3,8 @@
         <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.lime-orange.min.css" />
         <script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
         <script src="https://maps.googleapis.com/maps/api/js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
         
@@ -26,8 +28,8 @@
                     </nav>
                 </div>
                 <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
-                    <a href="#fixed-tab-1" class="mdl-layout__tab is-active" >Centros Deportivos</a>
-                    <a href="#fixed-tab-2" class="mdl-layout__tab">Actividades Deportivas</a>
+                    <a href="#tab-centros" class="mdl-layout__tab is-active" id="tab-centros-boton">Centros Deportivos</a>
+                    <a href="#tab-actividades" class="mdl-layout__tab" id="tab-actividades-boton">Actividades Deportivas</a>
                 </div>
             </header>
             <div class="mdl-layout__drawer">
@@ -39,19 +41,25 @@
                 </nav>
             </div>
             <main class="mdl-layout__content">
-                <section class="mdl-layout__tab-panel is-active" id="fixed-tab-1">
+                <section class="mdl-layout__tab-panel is-active" id="tab-centros">
                     <div class="page-content" ng-controller="Centros as centros">
-                        <div class="mdl-grid">
-                            <!-- Repetir por cada centro -->
+                        <!--<div class="mdl-grid">
+                            
+                            <!-- Repetir por cada centro>
                             <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--6-col-phone"" ng-repeat="centro in centros.centros">
                                 <div class="card-centro mdl-card mdl-shadow--2dp">
                                     <div class="mdl-card__title mdl-card--expand"></div>
                                     <div class="mdl-card__actions">
-                                        <span class="card-centro__filename">{{centro.nombre}}</span>
+                                        <span class="card-centro__filename">
+                                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                                            {{centro.nombre}}
+                                            </a>
+                                        </span>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                            
+                        </div>-->
                         <div class="mdl-grid">
                             <div class="mdl-cell mdl-cell--12-col">
                                 <div id="mapCentros"></div>
@@ -59,12 +67,22 @@
                         </div>
                     </div>
                 </section>
-                <section class="mdl-layout__tab-panel" id="fixed-tab-2">
+                <section class="mdl-layout__tab-panel" id="tab-actividades">
                     <div class="page-content" ng-controller="Actividades as actividades">
                         <div class="mdl-grid">
-                            <div class="mdl-cell mdl-cell--12-col">
-                                <h4>Todos los Centros Deportivos</h4>
+                            
+                            <div class="mdl-cell mdl-cell--4-col mdl-cell--5-col-tablet mdl-cell--12-col-phone">
+                                <h4>Centro deportivo de Prueba</h4>
+                                <h6>Calle falsa, 123</h6>
+                                <h6>Autobuses: 55, 66, 77</h6>
                             </div>
+                            <div class="mdl-cell mdl-cell--8-col mdl-cell--3-col-tablet mdl-cell--12-col-phone">
+                                <div id="mapActividades"></div>
+                            </div>
+                            
+                        </div>
+                        <div class="mdl-grid">
+                            
                         </div>
                         <div class="mdl-grid">
                             <!-- Repetir por cada actividad -->
@@ -72,14 +90,13 @@
                                 <div class="card-actividades mdl-card mdl-shadow--2dp">
                                     <div class="mdl-card__title mdl-card--expand">
                                         <h4>
-                                        Actividad: {{actividad.nombre}}<br>
                                         {{actividad.fecha}}<br>
                                         {{actividad.hora}}
                                         </h4>
                                     </div>
                                     <div class="mdl-card__actions mdl-card--border">
                                         <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                                        Centro Deportivo 1
+                                        {{actividad.nombre}}
                                         </a>
                                         <div class="mdl-layout-spacer"></div>
                                         <i class="material-icons">event</i>
@@ -87,11 +104,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="mdl-grid">
-                            <div class="mdl-cell mdl-cell--12-col">
-                                <div id="mapActividades"></div>
-                            </div>
-                        </div>
+                        
                     </div>
                 </section>
             </main>

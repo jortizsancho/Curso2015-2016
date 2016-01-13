@@ -10,12 +10,12 @@ var centrosDeportivos = [{
 }]; 
 
 var actividadesDeportivas = [{
-    nombre: "Nombre de la actividad",
+    nombre: "Partido de Futbol",
     fecha: "24 de Mayo de 2016",
     hora: "12:00 a 14:00"
 },
 {
-    nombre: "Nombre de la actividad",
+    nombre: "Carrera Ponle Freno",
     fecha: "24 de Mayo de 2016",
     hora: "12:00 a 14:00"
 }];
@@ -57,20 +57,35 @@ function cargarCentros() {
         var marca = new google.maps.Marker({
             position: {lat: centro.coordinates[0], lng: centro.coordinates[1]},
             label: "C",
-            map: mapCentros
+            map: mapCentros,
+            centro: centro
+        });
+        var ventana = new google.maps.InfoWindow({
+            content: generarVentana(centro)
+        });
+        marca.addListener('click', function () {
+            ventana.open(mapCentros, marca)
         });
     }, this);
 }
 
-function cargarActividades() {
-    actividadesDeportivas.forEach(function(actividad) {
-        var marca = new google.maps.Marker({
-            position: {lat: 40.420848, lng: -3.695427},
-            label: "A",
-            map: mapActividades
-        });
-    }, this);
+function cargarCentro (centro) {
+    alert(JSON.stringify(centro));
+}
+
+function generarVentana(centro) {
+    var contenido = centro.nombre + "<br>";
+    contenido += "Latitud: " + centro.coordinates[0] + "<br>";
+    contenido += "Longitud: " + centro.coordinates[1] + "<br>";
+    contenido += "<a href=\"#\" onclick=\"cambiarDeTab()\">Actividades Deportivas</a>";
+    return contenido;     
+}
+
+function cambiarDeTab() {
+    $("#tab-centros").removeClass("is-active");
+    $("#tab-centros-boton").removeClass("is-active");
+    $("#tab-actividades").addClass("is-active");
+    $("#tab-actividades-boton").addClass("is-active");
 }
 
 google.maps.event.addDomListener(window, 'load', cargarCentros);
-google.maps.event.addDomListener(window, 'load', cargarActividades);

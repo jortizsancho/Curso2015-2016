@@ -1,7 +1,18 @@
-#mapActividades, #mapCentros {
-                width: 100%;
-                height: 70vh;
-                background-color: #CCC;
+#mapActividades {
+    width: 100%;
+    height: 20vh;
+    background-color: #CCC;
+}
+
+#mapCentros {
+    width: 100%;
+    height: 80vh;
+    background-color: #CCC;
+}
+.card-centro.mdl-card {
+    width: 100%;
+    height: 100%;
+    background: #479E93;
 }
 .card-actividades.mdl-card {
     width: 100%;
@@ -27,7 +38,7 @@
 .card-actividades > .mdl-card__actions > .mdl-button {
     color: #fff;
 }
-.card-centro.mdl-card {
+/*.card-centros.mdl-card {
     width: 100%;
     height: 256px;
     background: url('http://www.elparalex.com/wp-content/uploads/2011/07/1311285911-day-street-view-abmarquitectos-528x297.jpg') center / cover;
@@ -41,4 +52,4 @@
     color: #fff;
     font-size: 14px;
     font-weight: 500;
-}
+}*/
