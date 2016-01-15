@@ -115,8 +115,6 @@ var mapCentros, mapActividades, sco;
       //});
       }; 
        
-      
-      
       this.actividades = actividadesDeportivas;       
     }]);
     
